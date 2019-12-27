@@ -24,7 +24,15 @@ class Board
   end
 end
 
+class Player
+  def initialize(sym)
+    @sym = sym
+  end
+  
+end
+
 main_board = Board.new
+player1 = Player.new('X')
 
 # variables for win condition
 draw = true
