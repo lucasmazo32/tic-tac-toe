@@ -61,6 +61,7 @@ class Board
 
     false
   end
+
 end
 
 puts 'Player 1, type your name'
@@ -91,6 +92,7 @@ while counter < 9
   end
   win = main_board.win_condition
   break if win
+
 
   counter += 1
 end
