@@ -16,11 +16,11 @@ def state(arr)
   puts "#{arr[6]} | #{arr[7]} | #{arr[8]}"
 end
 
-#variables for win condition
+# variables for win condition
 draw = true
 counter = 0
 
-#actual game loop
+# actual game loop
 while draw && counter < 9
   state(square_spaces)
   if counter.even?
