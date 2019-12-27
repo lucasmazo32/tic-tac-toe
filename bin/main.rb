@@ -1,20 +1,30 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-puts 'Hello World!'
-
 # options for movement
 
-square_spaces = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+class Board
+  def initialize
+    @state = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
+    show # try
+  end
 
-# method to print the table every iteration
-def state(arr)
-  puts "#{arr[0]} | #{arr[1]} | #{arr[2]}"
-  puts '---------'
-  puts "#{arr[3]} | #{arr[4]} | #{arr[5]}"
-  puts '---------'
-  puts "#{arr[6]} | #{arr[7]} | #{arr[8]}"
+  def position(num_pos, sym)
+    @state[num_pos] = sym
+    show
+  end
+
+  # method to print the table every iteration
+  def show
+    puts "#{@state[0]} | #{@state[1]} | #{@state[2]}"
+    puts '---------'
+    puts "#{@state[3]} | #{@state[4]} | #{@state[5]}"
+    puts '---------'
+    puts "#{@state[6]} | #{@state[7]} | #{@state[8]}"
+  end
 end
+
+main_board = Board.new
 
 # variables for win condition
 draw = true
