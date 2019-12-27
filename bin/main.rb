@@ -7,6 +7,23 @@ puts 'Hello World!'
 
 square_spaces = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
 
+def aviable_squares
+  check = true
+  while check
+    avi = []
+    square_spaces.each_with_index do |index, space|
+      avi << index if space == ' '
+    end
+    move = gets.chomp
+    if move <= 9 && move >= 1 && (move.is_a? Integer) && square_spaces[move - 1] == ' '
+      check = false
+    else
+      puts 'wrong input'
+    end
+  end
+  move
+end
+
 # method to print the table every iteration
 def state(arr)
   puts "#{arr[0]} | #{arr[1]} | #{arr[2]}"
@@ -24,12 +41,12 @@ counter = 0
 while draw && counter < 9
   state(square_spaces)
   if counter.even?
-    puts ' ' # mechanics for player 1 | puts to evade rubocop
+    puts 'player one\'s turn' # mechanics for player 1 | puts to evade rubocop
   else
-    puts '' # mechanics for plater 2 | puts to evade rubocop
+    puts 'player two\'s turn' # mechanics for plater 2 | puts to evade rubocop
   end
+  aviable_squares
   counter += 1
-  # wait = gets # gets for now so that it doesn't just loop 9 times
 end
 
 if draw
