@@ -30,17 +30,16 @@ class Board
     ]
   end
 
+  def comparator(first_index, second_index, third_index)
+    @state[first_index] == @state[second_index] && @state[second_index] == @state[third_index] &&
+      @state[third_index] != ' '
+  end
+
   def win_condition
     (0...3).each do |i|
-      if (@state[i * 3] == @state[i * 3 + 1] && @state[i * 3 + 1] == @state[i * 3 + 2] && @state[i * 3 + 2] != ' ') ||
-         (@state[i] == @state[i + 3] && @state[i + 3] == @state[i + 6] && @state[i + 6] != ' ')
-        return false
-      end
+      return false if comparator(i * 3, i * 3 + 1, i * 3 + 2) || comparator(i, i + 3, i + 6)
     end
-    if (@state[0] == @state[4] && @state[4] == @state[8] && @state[8] != ' ') ||
-       (@state[2] == @state[4] && @state[4] == @state[6] && @state[6] != ' ')
-      return false
-    end
+    return false if comparator(0, 4, 8) || comparator(2, 4, 6)
     return false if available.empty?
 
     true
