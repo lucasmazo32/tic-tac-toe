@@ -30,11 +30,6 @@ class Board
     ]
   end
 
-  def comparator(first_index, second_index, third_index)
-    @state[first_index] == @state[second_index] && @state[second_index] == @state[third_index] &&
-      @state[third_index] != ' '
-  end
-
   def win_condition
     (0...3).each do |i|
       return false if comparator(i * 3, i * 3 + 1, i * 3 + 2) || comparator(i, i + 3, i + 6)
@@ -43,5 +38,12 @@ class Board
     return false if available.empty?
 
     true
+  end
+
+  private
+
+  def comparator(first_index, second_index, third_index)
+    @state[first_index] == @state[second_index] && @state[second_index] == @state[third_index] &&
+      @state[third_index] != ' '
   end
 end
