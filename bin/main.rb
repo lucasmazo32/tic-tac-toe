@@ -1,8 +1,8 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-require('../lib/player.rb')
-require('../lib/board.rb')
+require_relative('../lib/player.rb')
+require_relative('../lib/board.rb')
 
 def until_player_choses(player, main_board)
   puts "Is your turn #{player.name}, select an empty space"
