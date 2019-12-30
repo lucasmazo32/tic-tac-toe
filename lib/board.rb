@@ -6,7 +6,7 @@ class Board
   end
 
   def available
-    @state
+    @state.each_index.select{|i| @state[i] == ' '}.map{ |x| x+1 }
   end
 
   def position(num_pos, sym)
@@ -34,14 +34,15 @@ class Board
     (0...3).each do |i|
       if (@state[i * 3] == @state[i * 3 + 1] && @state[i * 3 + 1] == @state[i * 3 + 2] && @state[i * 3 + 2] != ' ') ||
          (@state[i] == @state[i + 3] && @state[i + 3] == @state[i + 6] && @state[i + 6] != ' ')
-        return true
+        return false
       end
     end
     if (@state[0] == @state[4] && @state[4] == @state[8] && @state[8] != ' ') ||
        (@state[2] == @state[4] && @state[4] == @state[6] && @state[6] != ' ')
-      return true
+      return false
     end
+    return false if available.empty?
 
-    false
+    true
   end
 end

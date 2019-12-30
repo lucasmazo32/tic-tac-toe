@@ -10,8 +10,8 @@ def until_player_choses(player, main_board)
   until main_board.position(election, player.sym)
     print `clear`
     main_board.show.each { |line| puts line }
-    puts 'Incorrect value, please type a correct one.'
-    main_board.available.each_with_index { |x, index| print "#{index + 1} " if x == ' ' }
+    puts "Incorrect value, please type a correct one #{player.name}."
+    main_board.available.each{ |x| print "#{x} " }
     puts 'are the correct numbers'
     election = gets.chomp.to_i
   end
@@ -28,36 +28,35 @@ player2name = gets.chomp
 player1 = Player.new('X', player1name)
 player2 = Player.new('O', player2name)
 main_board = Board.new
-namecounter = 0
 
 # variables for win condition
-win = false
-counter = 0
+win_cond = true
+turn = 0
 new_game = true
+nameturn = 0
 
 # actual game loop
 while new_game
-  while counter < 9
+  while win_cond
     print `clear`
     main_board.show.each { |line| puts line }
-    main_board.available.each_with_index { |x, index| print "#{index + 1} " if x == ' ' }
-    if counter.even?
+    main_board.available.each{ |x| print "#{x} " }
+    if turn == 0
       until_player_choses(player1, main_board)
+      turn = 1
     else
       until_player_choses(player2, main_board)
+      turn = 0
     end
-    win = main_board.win_condition
-    break if win
-
-    counter += 1
+    win_cond = main_board.win_condition
   end
 
   print `clear`
   main_board.show.each { |line| puts line }
 
-  if win && counter.even?
+  if !main_board.available.empty? && turn==1
     puts "#{player1.name} won"
-  elsif win
+  elsif !main_board.available.empty?
     puts "#{player2.name} won"
   else
     puts 'Everybody lose | You are losers'
@@ -67,17 +66,18 @@ while new_game
   puts 'Remember that you it will change who starts!'
   again = gets.chomp
   if %w[Y y].include?(again)
-    new_game = true
     main_board = Board.new
-    counter = 0
-    if namecounter.even?
+    win_cond = true
+    if nameturn == 0
       player1 = Player.new('X', player2name)
       player2 = Player.new('O', player1name)
+      nameturn = 1
     else
       player1 = Player.new('X', player1name)
       player2 = Player.new('O', player2name)
+      nameturn = 0
     end
-    namecounter += 1
+    turn = 0
   else
     new_game = false
   end
