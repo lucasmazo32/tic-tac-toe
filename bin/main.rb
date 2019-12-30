@@ -64,6 +64,7 @@ while new_game
   end
 
   puts "Do you want to play again? Type Y or y if you want to continue, type anything else if you don't"
+  puts 'Remember that you it will change who starts!'
   again = gets.chomp
   if %w[Y y].include?(again)
     new_game = true
