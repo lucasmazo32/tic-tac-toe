@@ -6,7 +6,7 @@ class Board
   end
 
   def available
-    @state.each_index.select{|i| @state[i] == ' '}.map{ |x| x+1 }
+    @state.each_index.select { |i| @state[i] == ' ' }.map { |x| x + 1 }
   end
 
   def position(num_pos, sym)
