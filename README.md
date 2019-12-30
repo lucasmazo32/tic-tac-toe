@@ -19,7 +19,9 @@ Tic Tac Toe is a two-player game on a 3x3 board. The game is played by turns and
 
 - If you select an incorrect value, you will be asked to put the correct one! A message on the screen will tell you.
 
-- Enjoy! And last but not least, the screen will show you who is the winner!... or if none of you won.
+- Enjoy! The screen will show you who is the winner!... or if none of you won.
+
+- And last but not least, after the game is over and you want to play again, you just have to type y or Y in the screen and press enter. The player will automatically change positions (The one that started in the first game will be the second in the other one, and so on...).
 
 ## Reference
 
