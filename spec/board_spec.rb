@@ -4,17 +4,23 @@ require_relative('../lib/board.rb')
 require_relative('../lib/player.rb')
 
 describe Board do
-    describe '#available' do
-        it 'Returns the value of the index of the empty lines' do
-            main_board = Board.new
-            expect(main_board.available).to start_with [1,2,3]
-        end
+  describe '#available' do
+    it 'Returns the value of the index of the empty lines' do
+      main_board = Board.new
+      expect(main_board.available).to start_with [1, 2, 3]
     end
+  end
 
-    describe '#position' do
-        it 'Return true if the number is an integer between 1 and 9, and is available' do
-            main_board = Board.new
-            expect(main_board.position(2,"X")).to be true
-        end
+  describe '#position' do
+    context 'checks that the number is an integer between 1 and 9, and is available' do
+      it "If it's true" do
+        main_board = Board.new
+        expect(main_board.position('2', 'X')).to be true
+      end
+      it "If it's false" do
+        main_board = Board.new
+        expect(main_board.position('r', 'X')).to be false
+      end
     end
+  end
 end
