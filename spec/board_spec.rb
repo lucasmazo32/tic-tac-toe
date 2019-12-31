@@ -35,23 +35,23 @@ describe Board do
     context 'Checks if a player has won or if the game is over due to no more spaces available' do
       it 'Tells returns false if a column, diagonal or row have the same symbol' do
         main_board = Board.new
-        main_board.position(1,'X')
-        main_board.position(2,'X')
-        main_board.position(3,'X')
+        main_board.position(1, 'X')
+        main_board.position(2, 'X')
+        main_board.position(3, 'X')
         expect(main_board.win_condition).to be false
       end
 
       it 'Tells returns false if all the spaces are taken and no column, diagonal or row have the same symbol' do
         main_board = Board.new
-        main_board.position(1,'O')
-        main_board.position(2,'X')
-        main_board.position(3,'O')
-        main_board.position(4,'X')
-        main_board.position(5,'X')
-        main_board.position(6,'O')
-        main_board.position(7,'X')
-        main_board.position(8,'O')
-        main_board.position(9,'X')
+        main_board.position(1, 'O')
+        main_board.position(2, 'X')
+        main_board.position(3, 'O')
+        main_board.position(4, 'X')
+        main_board.position(5, 'X')
+        main_board.position(6, 'O')
+        main_board.position(7, 'X')
+        main_board.position(8, 'O')
+        main_board.position(9, 'X')
         expect(main_board.win_condition).to be false
       end
 
