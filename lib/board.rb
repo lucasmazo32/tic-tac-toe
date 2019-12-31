@@ -1,9 +1,13 @@
 # frozen_string_literal: true
 
 class Board
+  private
+
   def initialize
     @state = [' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ']
   end
+
+  public
 
   def available
     @state.each_index.select { |i| @state[i] == ' ' }.map { |x| x + 1 }
